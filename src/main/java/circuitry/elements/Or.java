@@ -12,7 +12,7 @@ public class Or extends Calculatable{
     protected Or(final Calculatable a, final Calculatable b) {
         Preconditions.checkNotNull(a, "Gate input should not be null");
         Preconditions.checkNotNull(b, "Gate input should not be null");
-        
+
         this.a = a;
         this.b = b;
     }
