@@ -14,7 +14,7 @@ public class Testing {
     public void testCreation() {
         Circuit circuit = factory.createCircuit(factory.createInputBoolean(false));
         circuit.hello();
-        System.out.println("Success!");
+        System.out.println("Success (testCreation)!");
     }
 
     @Test
@@ -36,7 +36,7 @@ public class Testing {
         input2.set(false);
         assertEquals(false, circuit.calculate());
 
-        System.out.println("Success!");
+        System.out.println("Success (testAndGate)!");
     }
 
     @Test
@@ -58,7 +58,7 @@ public class Testing {
         input2.set(false);
         assertEquals(true, circuit.calculate());
 
-        System.out.println("Test OR success!");
+        System.out.println("Success (testOrGate)!");
     }
 
 
@@ -70,21 +70,28 @@ public class Testing {
 
         input1.set(false);
         assertEquals(true, circuit.calculate());
-        System.out.println("Success!");
+        System.out.println("Success (testNotGate)!");
     }
-    
+
 
     @Test
-    public void test3() {
-        final InputBoolean input1 = factory.createInputBoolean(true);
-        final InputBoolean input2 = factory.createInputBoolean(false);
-        final InputBoolean input3 = factory.createInputBoolean(false);
-        Circuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, factory.createOrGateWithInputs(input2, input3)));
-        assertEquals(false, circuit.calculate());
+    public void testComplexCircuit() {
+        final InputBoolean a = factory.createInputBoolean(true);
+        final InputBoolean b = factory.createInputBoolean(false);
+        final InputBoolean c = factory.createInputBoolean(false);
 
-        input3.set(true);
+        final Calculatable sig1 = factory.createOrGateWithInputs(a, b);
+        final Calculatable sig2 = factory.createNotGateWithInput(c);
+        final Calculatable sig3 = factory.createAndGateWithInputs(sig1, sig2);
+
+        // circuit = (a or b) and (!c)
+        Circuit circuit = factory.createCircuit(sig3);
+
         assertEquals(true, circuit.calculate());
-        System.out.println("Success!");
+
+        c.set(true);
+        assertEquals(false, circuit.calculate());
+        System.out.println("Success (testComplexCircuit)!");
     }
 
 
@@ -98,7 +105,8 @@ public class Testing {
             circuit.calculate();
             fail("Wrong user-input or circuit connections were handled INCORRECTLY");
         } catch (final Exception e) {
-            System.out.println("Exception was thrown. This was the desired behaviour");
+//            System.out.println("Exception was thrown. This was the desired behaviour");
+            System.out.println("Success (testIfCircuitIsFailSafe1)!");
         }
     }
 
@@ -112,7 +120,8 @@ public class Testing {
             circuit.calculate();
             fail("Wrong user-input or circuit connections were handled INCORRECTLY");
         } catch (final Exception e) {
-            System.out.println("Exception was thrown. This was the desired behaviour");
+//            System.out.println("Exception was thrown. This was the desired behaviour");
+            System.out.println("Success (testIfCircuitIsFailSafe2)!");
         }
     }
 
@@ -128,10 +137,9 @@ public class Testing {
             circuit.calculate();
             fail("Wrong user-input or circuit connections were handled INCORRECTLY");
         } catch (final Exception e) {
-            System.out.println("Exception was thrown. This was the desired behaviour");
+//            System.out.println("Exception was thrown. This was the desired behaviour");
+            System.out.println("Success (testIfCircuitIsFailSafe3)!");
         }
-
-        System.out.println("Exceptions handled correctly!");
     }
 
 
