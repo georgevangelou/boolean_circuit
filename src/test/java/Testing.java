@@ -18,6 +18,7 @@ public class Testing {
      public void test1() {
          Circuit circuit = new Circuit(factory.createAndGateWithInputs(factory.createInputBoolean(false), factory.createInputBoolean(true)));
          assertEquals(false, circuit.calculate());
+         System.out.println("Success!");
      }
      
      @Test
@@ -29,6 +30,7 @@ public class Testing {
          
          input1.set(true);
          assertEquals(true, circuit.calculate());
+         System.out.println("Success!");
      }
      
      @Test
@@ -41,6 +43,7 @@ public class Testing {
          
          input3.set(true);
          assertEquals(true, circuit.calculate());
+         System.out.println("Success!");
      }
      
      @Test
@@ -51,6 +54,7 @@ public class Testing {
          
          input1.set(false);
          assertEquals(true, circuit.calculate());
+         System.out.println("Success!");
      }
      
      
@@ -58,6 +62,7 @@ public class Testing {
      public void hello() {
          Circuit circuit = new Circuit(factory.createInputBoolean(false));
          circuit.hello();
+         System.out.println("Success!");
      }
      
      
