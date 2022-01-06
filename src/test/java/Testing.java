@@ -15,9 +15,24 @@ public class Testing {
     private ElementFactory factory = new ElementFactory();
     
      @Test
-     public void test1() {
-         Circuit circuit = new Circuit(factory.createAndGateWithInputs(factory.createInputBoolean(false), factory.createInputBoolean(true)));
+     public void testAnd() {
+         final InputBoolean input1 = factory.createInputBoolean(false);
+         final InputBoolean input2 = factory.createInputBoolean(true);
+         Circuit circuit = new Circuit(factory.createAndGateWithInputs(input1, input2));
          assertEquals(false, circuit.calculate());
+
+         input1.set(true);
+         input2.set(true);
+         assertEquals(true, circuit.calculate());
+
+         input1.set(false);
+         input2.set(false);
+         assertEquals(false, circuit.calculate());
+
+         input1.set(true);
+         input2.set(false);
+         assertEquals(false, circuit.calculate());
+
          System.out.println("Success!");
      }
      
