@@ -11,17 +11,19 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  */
 public class Testing {
+    private Factory factory = new Factory();
+    
      @Test
      public void test1() {
-         Circuit circuit = new Circuit(new And(new InputBoolean(false), new InputBoolean(true)));
+         Circuit circuit = new Circuit(factory.createAndGateWithInputs(factory.createInputBoolean(false), factory.createInputBoolean(true)));
          assertEquals(false, circuit.calculate());
      }
      
      @Test
      public void test2() {
-         final InputBoolean input1 = new InputBoolean(false);
-         final InputBoolean input2 = new InputBoolean(true);
-         Circuit circuit = new Circuit(new And(input1, input2));
+         final InputBoolean input1 = factory.createInputBoolean(false);
+         final InputBoolean input2 = factory.createInputBoolean(true);
+         Circuit circuit = new Circuit(factory.createAndGateWithInputs(input1, input2));
          assertEquals(false, circuit.calculate());
          
          input1.set(true);
@@ -30,10 +32,10 @@ public class Testing {
      
      @Test
      public void test3() {
-         final InputBoolean input1 = new InputBoolean(true);
-         final InputBoolean input2 = new InputBoolean(false);
-         final InputBoolean input3 = new InputBoolean(false);
-         Circuit circuit = new Circuit(new And(input1, new Or(input2, input3)));
+         final InputBoolean input1 = factory.createInputBoolean(true);
+         final InputBoolean input2 = factory.createInputBoolean(false);
+         final InputBoolean input3 = factory.createInputBoolean(false);
+         Circuit circuit = new Circuit(factory.createAndGateWithInputs(input1, factory.createOrGateWithInputs(input2, input3)));
          assertEquals(false, circuit.calculate());
          
          input3.set(true);

@@ -6,7 +6,7 @@ package circuitry.gates;
 public class InputBoolean extends Calculatable{
     private boolean value;
     
-    public InputBoolean(final boolean value) {
+    protected InputBoolean(final boolean value) {
         this.value = value;
     }
     
