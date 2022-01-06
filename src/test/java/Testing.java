@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author George
  */
 public class Testing {
      @Test
