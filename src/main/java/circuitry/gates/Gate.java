@@ -3,6 +3,6 @@ package circuitry.gates;
 /**
  *
  */
-public class Gate {
+public abstract class Gate {
     
 }
