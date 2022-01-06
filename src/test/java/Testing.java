@@ -1,6 +1,5 @@
 import circuitry.api.Circuit;
-import circuitry.gates.And;
-import circuitry.gates.InputBoolean;
+import circuitry.gates.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,6 +26,18 @@ public class Testing {
          System.out.println("Answer should be false: " + circuit.calculate());
          
          input1.set(true);
+         System.out.println("Answer should be true: " + circuit.calculate());
+     }
+     
+     @Test
+     public void test3() {
+         final InputBoolean input1 = new InputBoolean(true);
+         final InputBoolean input2 = new InputBoolean(false);
+         final InputBoolean input3 = new InputBoolean(false);
+         Circuit circuit = new Circuit(new And(input1, new Or(input2, input3)));
+         System.out.println("Answer should be false: " + circuit.calculate());
+         
+         input3.set(true);
          System.out.println("Answer should be true: " + circuit.calculate());
      }
      
