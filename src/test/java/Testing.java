@@ -43,6 +43,16 @@ public class Testing {
          assertEquals(true, circuit.calculate());
      }
      
+     @Test
+     public void testNot() {
+         final InputBoolean input1 = factory.createInputBoolean(true);
+         Circuit circuit = new Circuit(factory.createNotGateWithInput(input1));
+         assertEquals(false, circuit.calculate());
+         
+         input1.set(false);
+         assertEquals(true, circuit.calculate());
+     }
+     
      
      @Test
      public void hello() {
