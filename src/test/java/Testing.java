@@ -45,7 +45,7 @@ public class Testing {
      
      @Test
      public void hello() {
-         Circuit circuit = new Circuit(new InputBoolean(false));
+         Circuit circuit = new Circuit(factory.createInputBoolean(false));
          circuit.hello();
      }
      
