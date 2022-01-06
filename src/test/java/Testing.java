@@ -13,13 +13,21 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author George
  */
 public class Testing {
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
      @Test
      public void test1() {
          Circuit circuit = new Circuit(new And(new InputBoolean(false), new InputBoolean(true)));
          System.out.println("Answer should be false: " + circuit.calculate());
+     }
+     
+     @Test
+     public void test2() {
+         final InputBoolean input1 = new InputBoolean(false);
+         final InputBoolean input2 = new InputBoolean(true);
+         Circuit circuit = new Circuit(new And(input1, input2));
+         System.out.println("Answer should be false: " + circuit.calculate());
+         
+         input1.set(true);
+         System.out.println("Answer should be true: " + circuit.calculate());
      }
      
      
