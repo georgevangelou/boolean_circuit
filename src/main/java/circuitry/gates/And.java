@@ -3,7 +3,7 @@ package circuitry.gates;
 /**
  *
  */
-public class And extends Gate {
+public class And extends Calculatable {
     private final Calculatable a;
     private final Calculatable b;
     

@@ -3,7 +3,7 @@ package circuitry.gates;
 /**
  *
  */
-public class Or extends Gate{
+public class Or extends Calculatable{
     private final Calculatable a;
     private final Calculatable b;
     

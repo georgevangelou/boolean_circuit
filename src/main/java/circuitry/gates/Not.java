@@ -3,7 +3,7 @@ package circuitry.gates;
 /**
  *
  */
-public class Not extends Gate {
+public class Not extends Calculatable {
     private final Calculatable a;
     
     public Not(final Calculatable a) {
