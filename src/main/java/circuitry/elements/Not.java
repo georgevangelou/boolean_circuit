@@ -9,7 +9,7 @@ public class Not extends Calculatable {
     private final Calculatable a;
     
     protected Not(final Calculatable a) {
-        Preconditions.checkNotNull(a);
+        Preconditions.checkNotNull(a, "Gate input should not be null");
 
         this.a = a;
     }

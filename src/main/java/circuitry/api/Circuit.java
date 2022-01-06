@@ -1,6 +1,7 @@
 package circuitry.api;
 
 import circuitry.elements.Calculatable;
+import com.google.common.base.Preconditions;
 
 /**
  *
@@ -12,7 +13,9 @@ public class Circuit {
         System.out.println("Hello world");
     }
     
-    public Circuit(Calculatable calculatable) {
+    public Circuit(final Calculatable calculatable) {
+        Preconditions.checkNotNull(calculatable, "Circuit input should not be null");
+        
         this.calculatable = calculatable;
     }
     
