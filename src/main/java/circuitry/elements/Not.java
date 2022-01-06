@@ -1,5 +1,7 @@
 package circuitry.elements;
 
+import com.google.common.base.Preconditions;
+
 /**
  *
  */
@@ -7,11 +9,13 @@ public class Not extends Calculatable {
     private final Calculatable a;
     
     protected Not(final Calculatable a) {
+        Preconditions.checkNotNull(a);
+
         this.a = a;
     }
-            
-            
-    public boolean calculate() {
+
+
+    protected boolean calculateInner() {
         return !a.calculate();
     }
 }

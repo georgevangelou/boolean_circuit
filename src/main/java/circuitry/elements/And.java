@@ -12,8 +12,8 @@ public class And extends Calculatable {
         this.a = a;
         this.b = b;
     }
-            
-    public boolean calculate() {
+
+    protected boolean calculateInner() {
         return a.calculate() && b.calculate();
     }
 }

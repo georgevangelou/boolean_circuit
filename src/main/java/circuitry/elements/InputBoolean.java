@@ -9,8 +9,8 @@ public class InputBoolean extends Calculatable{
     protected InputBoolean(final boolean value) {
         this.value = value;
     }
-    
-    public boolean calculate() {
+
+    protected boolean calculateInner() {
         return this.value;
     }
     
