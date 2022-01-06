@@ -4,7 +4,16 @@ package circuitry.gates;
  *
  */
 public class And extends Gate {
-    protected boolean calculate(final boolean a, final boolean b) {
-        return a && b;
+    private final Calculatable a;
+    private final Calculatable b;
+    
+    
+    public And(final Calculatable a, final Calculatable b) {
+        this.a = a;
+        this.b = b;
+    }
+            
+    public boolean calculate() {
+        return a.calculate() && b.calculate();
     }
 }

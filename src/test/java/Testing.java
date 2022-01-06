@@ -1,4 +1,6 @@
 import circuitry.api.Circuit;
+import circuitry.gates.And;
+import circuitry.gates.InputBoolean;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +17,15 @@ public class Testing {
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
+     public void test1() {
+         Circuit circuit = new Circuit(new And(new InputBoolean(false), new InputBoolean(true)));
+         System.out.println("Answer should be false: " + circuit.calculate());
+     }
+     
+     
+     @Test
      public void hello() {
-         Circuit circuit = new Circuit();
+         Circuit circuit = new Circuit(new InputBoolean(false));
          circuit.hello();
      }
      

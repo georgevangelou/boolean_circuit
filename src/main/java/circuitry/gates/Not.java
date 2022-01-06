@@ -4,7 +4,14 @@ package circuitry.gates;
  *
  */
 public class Not extends Gate {
-    protected boolean calculate(final boolean a, final boolean b) {
-        return !a;
+    private final Calculatable a;
+    
+    public Not(final Calculatable a) {
+        this.a = a;
+    }
+            
+            
+    public boolean calculate() {
+        return a.calculate();
     }
 }
