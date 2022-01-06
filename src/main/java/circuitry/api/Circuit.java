@@ -1,6 +1,6 @@
 package circuitry.api;
 
-import circuitry.gates.Calculatable;
+import circuitry.elements.Calculatable;
 
 /**
  *

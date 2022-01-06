@@ -1,14 +1,14 @@
-package circuitry.gates;
+package circuitry.elements;
 
-import circuitry.gates.And;
-import circuitry.gates.Calculatable;
-import circuitry.gates.Not;
-import circuitry.gates.Or;
+import circuitry.elements.And;
+import circuitry.elements.Calculatable;
+import circuitry.elements.Not;
+import circuitry.elements.Or;
 
 /**
  *
  */
-public class Factory {
+public class ElementFactory {
     public final InputBoolean createInputBoolean(final boolean value) {
         return new InputBoolean(value);
     }

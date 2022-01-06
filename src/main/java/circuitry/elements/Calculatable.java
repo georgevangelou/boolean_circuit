@@ -1,4 +1,4 @@
-package circuitry.gates;
+package circuitry.elements;
 
 /**
  *

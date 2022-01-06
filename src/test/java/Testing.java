@@ -1,5 +1,6 @@
+import circuitry.elements.InputBoolean;
+import circuitry.elements.ElementFactory;
 import circuitry.api.Circuit;
-import circuitry.gates.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  */
 public class Testing {
-    private Factory factory = new Factory();
+    private ElementFactory factory = new ElementFactory();
     
      @Test
      public void test1() {
