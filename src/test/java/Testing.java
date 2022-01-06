@@ -133,7 +133,7 @@ public class Testing {
             final Calculatable sig1 = factory.createAndGateWithInputs(input1, input2);
             final Calculatable sig2 = factory.createNotGateWithInput(null);
             final Calculatable sig3 = factory.createOrGateWithInputs(sig1, sig2);
-            Circuit circuit = factory.createCircuit(sig1);
+            Circuit circuit = factory.createCircuit(sig3);
             circuit.calculate();
             fail("Wrong user-input or circuit connections were handled INCORRECTLY");
         } catch (final Exception e) {
