@@ -1,10 +1,7 @@
+import circuitry.elements.API;
 import circuitry.elements.InputBoolean;
 import circuitry.elements.ElementFactory;
-import circuitry.api.Circuit;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
+import circuitry.elements.Circuit;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  */
 public class Testing {
-    private ElementFactory factory = new ElementFactory();
+    private ElementFactory factory = new ElementFactory(API.VERSION);
     
      @Test
      public void testAnd() {
          final InputBoolean input1 = factory.createInputBoolean(false);
          final InputBoolean input2 = factory.createInputBoolean(true);
-         Circuit circuit = new Circuit(factory.createAndGateWithInputs(input1, input2));
+         Circuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, input2));
          assertEquals(false, circuit.calculate());
 
          input1.set(true);
@@ -40,7 +37,7 @@ public class Testing {
      public void test2() {
          final InputBoolean input1 = factory.createInputBoolean(false);
          final InputBoolean input2 = factory.createInputBoolean(true);
-         Circuit circuit = new Circuit(factory.createAndGateWithInputs(input1, input2));
+         Circuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, input2));
          assertEquals(false, circuit.calculate());
          
          input1.set(true);
@@ -53,7 +50,7 @@ public class Testing {
          final InputBoolean input1 = factory.createInputBoolean(true);
          final InputBoolean input2 = factory.createInputBoolean(false);
          final InputBoolean input3 = factory.createInputBoolean(false);
-         Circuit circuit = new Circuit(factory.createAndGateWithInputs(input1, factory.createOrGateWithInputs(input2, input3)));
+         Circuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, factory.createOrGateWithInputs(input2, input3)));
          assertEquals(false, circuit.calculate());
          
          input3.set(true);
@@ -64,7 +61,7 @@ public class Testing {
      @Test
      public void testNot() {
          final InputBoolean input1 = factory.createInputBoolean(true);
-         Circuit circuit = new Circuit(factory.createNotGateWithInput(input1));
+         Circuit circuit = factory.createCircuit(factory.createNotGateWithInput(input1));
          assertEquals(false, circuit.calculate());
          
          input1.set(false);
@@ -75,7 +72,7 @@ public class Testing {
      
      @Test
      public void hello() {
-         Circuit circuit = new Circuit(factory.createInputBoolean(false));
+         Circuit circuit = factory.createCircuit(factory.createInputBoolean(false));
          circuit.hello();
          System.out.println("Success!");
      }
