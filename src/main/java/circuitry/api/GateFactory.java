@@ -2,6 +2,8 @@ package circuitry.api;
 
 import circuitry.gates.And;
 import circuitry.gates.Calculatable;
+import circuitry.gates.Not;
+import circuitry.gates.Or;
 
 /**
  *
