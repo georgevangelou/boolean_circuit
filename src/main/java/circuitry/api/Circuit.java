@@ -6,7 +6,7 @@ import circuitry.gates.Calculatable;
  *
  */
 public class Circuit {
-    Calculatable calculatable;
+    private final Calculatable calculatable;
     
     public void hello() {
         System.out.println("Hello world");
