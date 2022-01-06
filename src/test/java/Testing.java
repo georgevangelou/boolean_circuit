@@ -32,6 +32,29 @@ public class Testing {
 
          System.out.println("Success!");
      }
+
+     @Test
+     public void testOr() {
+         final InputBoolean input1 = factory.createInputBoolean(false);
+         final InputBoolean input2 = factory.createInputBoolean(true);
+         Circuit circuit = factory.createCircuit(factory.createOrGateWithInputs(input1, input2));
+         assertEquals(true, circuit.calculate());
+
+         input1.set(true);
+         input2.set(true);
+         assertEquals(true, circuit.calculate());
+
+         input1.set(false);
+         input2.set(false);
+         assertEquals(false, circuit.calculate());
+
+         input1.set(true);
+         input2.set(false);
+         assertEquals(true, circuit.calculate());
+
+         System.out.println("Test OR success!");
+     }
+     
      
      @Test
      public void test2() {
