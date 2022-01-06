@@ -12,6 +12,6 @@ public class Not extends Gate {
             
             
     public boolean calculate() {
-        return a.calculate();
+        return !a.calculate();
     }
 }
