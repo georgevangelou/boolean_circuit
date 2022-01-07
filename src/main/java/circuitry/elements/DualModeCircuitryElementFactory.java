@@ -8,8 +8,8 @@ import java.util.InputMismatchException;
 /**
  * Created on: 2022-01-07
  */
-public class ExtendedCircuitryElementFactory extends API {
-    public ExtendedCircuitryElementFactory(int version) {
+public class DualModeCircuitryElementFactory extends API {
+    public DualModeCircuitryElementFactory(int version) {
         init(version);
     }
 
@@ -21,10 +21,10 @@ public class ExtendedCircuitryElementFactory extends API {
     }
 
 
-    public final AdvancedCircuit createCircuit(final Calculatable<?> a) {
+    public final DualModeCircuit createCircuit(final Calculatable<?> a) {
         Preconditions.checkNotNull(a, "Circuit input should not be null");
 
-        return new AdvancedCircuit((Calculatable<?> )a);
+        return new DualModeCircuit((Calculatable<?> )a);
     }
 
 

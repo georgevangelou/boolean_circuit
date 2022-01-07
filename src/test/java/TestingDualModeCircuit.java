@@ -1,6 +1,6 @@
 import circuitry.elements.API;
-import circuitry.elements.AdvancedCircuit;
-import circuitry.elements.ExtendedCircuitryElementFactory;
+import circuitry.elements.DualModeCircuit;
+import circuitry.elements.DualModeCircuitryElementFactory;
 import circuitry.elements.InputPair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.fail;
 /**
  *
  */
-public class TestingBooleanDoubleCircuit {
-    private final ExtendedCircuitryElementFactory factory = new ExtendedCircuitryElementFactory(API.VERSION);
+public class TestingDualModeCircuit {
+    private final DualModeCircuitryElementFactory factory = new DualModeCircuitryElementFactory(API.VERSION);
 
 
     @Test
     public void testCircuitCreation() {
-        AdvancedCircuit circuit = factory.createCircuit(factory.createInputPair(true, true));
+        DualModeCircuit circuit = factory.createCircuit(factory.createInputPair(true, true));
         circuit.hello();
         System.out.println("Success (testCreation)!");
     }
@@ -27,7 +27,7 @@ public class TestingBooleanDoubleCircuit {
     public void testAndGateBoolean() {
         final InputPair<?> input1 = factory.createInputPair(true, false);
         final InputPair<?> input2 = factory.createInputPair(true, true);
-        AdvancedCircuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, input2));
+        DualModeCircuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, input2));
         assertEquals(Pair.of(true, false), circuit.calculate());
 
         input1.set(factory.createInputPair(true, true));
@@ -50,7 +50,7 @@ public class TestingBooleanDoubleCircuit {
 
         final InputPair<?> input1 = factory.createInputPair(false, 0.6);
         final InputPair<?> input2 = factory.createInputPair(false, 0.5);
-        AdvancedCircuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, input2));
+        DualModeCircuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, input2));
         result = circuit.calculate();
         assertEquals(false, result.getLeft());
         assertEquals(0.3, (double) result.getRight(), 0.001);
@@ -75,7 +75,7 @@ public class TestingBooleanDoubleCircuit {
     public void testOrGateBoolean() {
         final InputPair<?> input1 = factory.createInputPair(true, false);
         final InputPair<?> input2 = factory.createInputPair(true, true);
-        AdvancedCircuit circuit = factory.createCircuit(factory.createOrGateWithInputs(input1, input2));
+        DualModeCircuit circuit = factory.createCircuit(factory.createOrGateWithInputs(input1, input2));
         assertEquals(Pair.of(true, true), circuit.calculate());
 
         input1.set(factory.createInputPair(true, false));
@@ -98,7 +98,7 @@ public class TestingBooleanDoubleCircuit {
 
         final InputPair<?> input1 = factory.createInputPair(false, 0.6);
         final InputPair<?> input2 = factory.createInputPair(false, 0.5);
-        AdvancedCircuit circuit = factory.createCircuit(factory.createOrGateWithInputs(input1, input2));
+        DualModeCircuit circuit = factory.createCircuit(factory.createOrGateWithInputs(input1, input2));
         result = circuit.calculate();
         assertEquals(false, result.getLeft());
         assertEquals(1 - (1 - 0.6) * (1 - 0.5), (double) result.getRight(), 0.001);
@@ -122,7 +122,7 @@ public class TestingBooleanDoubleCircuit {
     @Test
     public void testNotGateBoolean() {
         final InputPair<?> input1 = factory.createInputPair(true, false);
-        AdvancedCircuit circuit = factory.createCircuit(factory.createNotGateWithInputs(input1));
+        DualModeCircuit circuit = factory.createCircuit(factory.createNotGateWithInputs(input1));
         assertEquals(Pair.of(true, true), circuit.calculate());
 
         input1.set(factory.createInputPair(true, true));
@@ -142,7 +142,7 @@ public class TestingBooleanDoubleCircuit {
         Pair<Boolean, ?> result;
 
         final InputPair<?> input1 = factory.createInputPair(false, 0.6);
-        AdvancedCircuit circuit = factory.createCircuit(factory.createNotGateWithInputs(input1));
+        DualModeCircuit circuit = factory.createCircuit(factory.createNotGateWithInputs(input1));
         result = circuit.calculate();
         assertEquals(false, result.getLeft());
         assertEquals(1 - 0.6, (double) result.getRight(), 0.001);
@@ -160,41 +160,6 @@ public class TestingBooleanDoubleCircuit {
         System.out.println("Success (testAndGateDouble)!");
     }
 
-//
-//    @Test
-//    public void testOrGate() {
-//        final InputPair input1 = factory.createInputPair(false, 0);
-//        final InputPair input2 = factory.createInputPair(true, true);
-//        BooleanDoubleCircuit circuit = factory.createCircuit(factory.createOrGateWithInputs(input1, input2));
-//        assertEquals(true, circuit.calculate());
-//
-//        input1.set(true);
-//        input2.set(true);
-//        assertEquals(true, circuit.calculate());
-//
-//        input1.set(false);
-//        input2.set(false);
-//        assertEquals(false, circuit.calculate());
-//
-//        input1.set(true);
-//        input2.set(false);
-//        assertEquals(true, circuit.calculate());
-//
-//        System.out.println("Success (testOrGate)!");
-//    }
-//
-//
-//    @Test
-//    public void testNotGate() {
-//        final InputPair input1 = factory.createInputPair(true, true);
-//        BooleanDoubleCircuit circuit = factory.createCircuit(factory.createNotGateWithInput(input1));
-//        assertEquals(false, circuit.calculate());
-//
-//        input1.set(false);
-//        assertEquals(true, circuit.calculate());
-//        System.out.println("Success (testNotGate)!");
-//    }
-//
 //
 //    @Test
 //    public void testComplexCircuit() {
@@ -267,7 +232,7 @@ public class TestingBooleanDoubleCircuit {
 //    }
 
 
-    public TestingBooleanDoubleCircuit() {
+    public TestingDualModeCircuit() {
     }
 
     @org.junit.jupiter.api.BeforeAll
