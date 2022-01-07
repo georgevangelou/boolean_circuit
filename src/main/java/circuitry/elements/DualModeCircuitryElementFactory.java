@@ -24,7 +24,7 @@ public class DualModeCircuitryElementFactory extends API {
     public final DualModeCircuit createCircuit(final Calculatable<?> a) {
         Preconditions.checkNotNull(a, "Circuit input should not be null");
 
-        return new DualModeCircuit((Calculatable<?> )a);
+        return new DualModeCircuit((Calculatable<?>) a);
     }
 
 
@@ -80,8 +80,8 @@ public class DualModeCircuitryElementFactory extends API {
         Preconditions.checkNotNull(a, "Gate input should not be null");
         Preconditions.checkNotNull(b, "Gate input should not be null");
 
-        if (a.calculate().getRight() instanceof Double) {
-            return new Gte<>((Calculatable<Double>) a, (Calculatable<Double>) b);
+        if (a.calculate().getRight() instanceof Double && b.calculate().getRight() instanceof Double) {
+            return new Gte<>(a, b);
         } else {
             throw new InputMismatchException("Wrong matching");
         }
