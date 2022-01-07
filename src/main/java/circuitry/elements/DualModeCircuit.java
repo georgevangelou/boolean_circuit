@@ -6,7 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 /**
  * Created on: 2022-01-07
  */
-public class DualModeCircuit {
+public final class DualModeCircuit {
    private final Calculatable<?> calculatable;
 
 

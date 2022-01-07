@@ -6,7 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 /**
  *
  */
-public class Not<T> extends Calculatable<T> {
+class Not<T> extends Calculatable<T> {
     private final Calculatable<T> a;
     private final Class<T> classOfInputs;
 

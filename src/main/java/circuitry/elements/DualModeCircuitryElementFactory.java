@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
 /**
  * Created on: 2022-01-07
  */
-public class DualModeCircuitryElementFactory extends API {
+public final class DualModeCircuitryElementFactory extends API {
     public DualModeCircuitryElementFactory(int version) {
         init(version);
     }

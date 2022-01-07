@@ -6,7 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 /**
  *
  */
-public class Gte<T> extends Calculatable<T> {
+class Gte<T> extends Calculatable<T> {
     private final Calculatable<Double> a;
     private final Calculatable<Double> b;
     private final Class<Double> classOfInputs = Double.class;

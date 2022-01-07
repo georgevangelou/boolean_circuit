@@ -25,10 +25,6 @@ public final class InputPair<T> extends Calculatable<T> {
         }
     }
 
-//    private Pair<Boolean, ?> getPair() {
-//        return pair;
-//    }
-
     public void setValue(final boolean isBoolean, final T value) {
         if ((this.pair.getLeft() == isBoolean)
                 && ((this.pair.getLeft() && value instanceof Boolean)
