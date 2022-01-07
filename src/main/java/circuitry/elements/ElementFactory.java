@@ -54,7 +54,6 @@ public final class ElementFactory extends API {
     }
 
 
-
     public final Circuit createDualModeCircuit(final Calculatable<?> a) {
         Preconditions.checkNotNull(a, "Circuit input should not be null");
 
@@ -63,7 +62,8 @@ public final class ElementFactory extends API {
 
 
     public final InputPair<?> createInputPair(final boolean valueIsBoolean, final Object value) {
-        if (((value.getClass() == Double.class) && !valueIsBoolean) || ((value.getClass() == Boolean.class) && valueIsBoolean)) {
+        if (((value.getClass() == Double.class) && !valueIsBoolean && ((Double) value >= 0) && ((Double) value <= 1))
+                || ((value.getClass() == Boolean.class) && valueIsBoolean)) {
             return new InputPair<>(Pair.of(valueIsBoolean, value));
         }
         throw new InputMismatchException("Wrong input pair");
