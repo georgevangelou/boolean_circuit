@@ -157,49 +157,6 @@ public class TestingDualModeCircuit {
         System.out.println("Success (testAndGateDouble)!");
     }
 
-    // (x4 and x3) or (x2 and not (x1))
-    @Test
-    public void testComplexCircuitBoolean() {
-        Pair<Boolean, ?> result;
-
-        final InputPair<?> input1 = factory.createInputPair(true, true);
-        final InputPair<?> input2 = factory.createInputPair(true, true);
-        final InputPair<?> input3 = factory.createInputPair(true, true);
-        final InputPair<?> input4 = factory.createInputPair(true, true);
-
-        final Calculatable<?> sig1 = factory.createDualModeNotGateWithInputs(input1);
-        final Calculatable<?> sig2 = factory.createDualModeAndGateWithInputs(sig1, input2);
-        final Calculatable<?> sig3 = factory.createDualModeAndGateWithInputs(input3, input4);
-        final Calculatable<?> sig4 = factory.createDualModeOrGateWithInputs(sig3, sig2);
-
-        Circuit circuit = factory.createCircuit(sig4);
-        result = circuit.calculatePairOutput();
-        assertEquals(Pair.of(true, true), result);
-
-        input1.set(factory.createInputPair(true, false));
-        input2.set(factory.createInputPair(true, false));
-        input3.set(factory.createInputPair(true, false));
-
-        final Calculatable<?> sig5 = factory.createDualModeNotGateWithInputs(input1);
-        final Calculatable<?> sig6 = factory.createDualModeAndGateWithInputs(sig5, input2);
-        final Calculatable<?> sig7 = factory.createDualModeAndGateWithInputs(input3, input4);
-        final Calculatable<?> sig8 = factory.createDualModeOrGateWithInputs(sig7, sig6);
-
-        Circuit circuit1 = factory.createCircuit(sig8);
-        result = circuit1.calculatePairOutput();
-        assertEquals(Pair.of(true, false), result);
-
-        try {
-            input1.set(factory.createInputPair(false, 0.7));
-            input2.set(factory.createInputPair(false, 0.8));
-            input3.set(factory.createInputPair(false, 0.9));
-            input4.set(factory.createInputPair(false, 0.6));
-            fail("Exception should have been thrown");
-        } catch (Exception e) {
-        }
-        System.out.println("Success (testComplexCircuitDouble)!");
-    }
-
 
     @Test
     public void testGteGateBoolean() {
@@ -245,6 +202,52 @@ public class TestingDualModeCircuit {
         } catch (Exception e) {
         }
         System.out.println("Success (testGteGateDouble)!");
+    }
+
+
+    /**
+     * (x4 and x3) or (x2 and not (x1))
+     */
+    @Test
+    public void testComplexCircuitBoolean() {
+        Pair<Boolean, ?> result;
+
+        final InputPair<?> input1 = factory.createInputPair(true, true);
+        final InputPair<?> input2 = factory.createInputPair(true, true);
+        final InputPair<?> input3 = factory.createInputPair(true, true);
+        final InputPair<?> input4 = factory.createInputPair(true, true);
+
+        final Calculatable<?> sig1 = factory.createDualModeNotGateWithInputs(input1);
+        final Calculatable<?> sig2 = factory.createDualModeAndGateWithInputs(sig1, input2);
+        final Calculatable<?> sig3 = factory.createDualModeAndGateWithInputs(input3, input4);
+        final Calculatable<?> sig4 = factory.createDualModeOrGateWithInputs(sig3, sig2);
+
+        Circuit circuit = factory.createCircuit(sig4);
+        result = circuit.calculatePairOutput();
+        assertEquals(Pair.of(true, true), result);
+
+        input1.set(factory.createInputPair(true, false));
+        input2.set(factory.createInputPair(true, false));
+        input3.set(factory.createInputPair(true, false));
+
+        final Calculatable<?> sig5 = factory.createDualModeNotGateWithInputs(input1);
+        final Calculatable<?> sig6 = factory.createDualModeAndGateWithInputs(sig5, input2);
+        final Calculatable<?> sig7 = factory.createDualModeAndGateWithInputs(input3, input4);
+        final Calculatable<?> sig8 = factory.createDualModeOrGateWithInputs(sig7, sig6);
+
+        Circuit circuit1 = factory.createCircuit(sig8);
+        result = circuit1.calculatePairOutput();
+        assertEquals(Pair.of(true, false), result);
+
+        try {
+            input1.set(factory.createInputPair(false, 0.7));
+            input2.set(factory.createInputPair(false, 0.8));
+            input3.set(factory.createInputPair(false, 0.9));
+            input4.set(factory.createInputPair(false, 0.6));
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+        }
+        System.out.println("Success (testComplexCircuitDouble)!");
     }
 
 
