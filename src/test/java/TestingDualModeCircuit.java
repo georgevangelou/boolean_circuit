@@ -160,6 +160,52 @@ public class TestingDualModeCircuit {
         System.out.println("Success (testAndGateDouble)!");
     }
 
+    @Test
+    public void testGteGateBoolean() {
+        final InputPair<?> input1 = factory.createInputPair(true, false);
+        final InputPair<?> input2 = factory.createInputPair(true, true);
+
+        try {
+            DualModeCircuit circuit = factory.createCircuit(factory.createGteGateWithInputs(input1, input2));
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+        }
+        System.out.println("Success (testGteGateBoolean)!");
+    }
+
+
+    @Test
+    public void testGteGateDouble() {
+        Pair<Boolean, ?> result;
+
+        final InputPair<?> input1 = factory.createInputPair(false, 0.6);
+        final InputPair<?> input2 = factory.createInputPair(false, 0.5);
+        DualModeCircuit circuit = factory.createCircuit(factory.createGteGateWithInputs(input1, input2));
+        result = circuit.calculate();
+        assertEquals(false, result.getLeft());
+        assertEquals(true, result.getRight());
+
+        input1.set(factory.createInputPair(false, 0.1));
+        input2.set(factory.createInputPair(false, 0.1));
+        result = circuit.calculate();
+        assertEquals(false, result.getLeft());
+        assertEquals(true, result.getRight());
+
+        input1.set(factory.createInputPair(false, 0.1));
+        input2.set(factory.createInputPair(false, 0.3));
+        result = circuit.calculate();
+        assertEquals(false, result.getLeft());
+        assertEquals(false, result.getRight());
+
+        try {
+            input1.set(factory.createInputPair(true, true));
+            input2.set(factory.createInputPair(true, false));
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+        }
+        System.out.println("Success (testGteGateDouble)!");
+    }
+
 //
 //    @Test
 //    public void testComplexCircuit() {
