@@ -18,7 +18,7 @@ public final class ElementFactory extends API {
     }
 
 
-    public final Circuit createCircuit(final Calculatable a) {
+    public final Circuit createCircuit(final Calculatable<Boolean> a) {
         Preconditions.checkNotNull(a, "Circuit input should not be null");
 
         return new Circuit(a);
@@ -30,25 +30,25 @@ public final class ElementFactory extends API {
     }
 
 
-    public final Calculatable createAndGateWithInputs(final Calculatable a, final Calculatable b) {
+    public final Calculatable<Boolean> createAndGateWithInputs(final Calculatable<Boolean> a, final Calculatable<Boolean> b) {
         Preconditions.checkNotNull(a, "Gate input should not be null");
         Preconditions.checkNotNull(b, "Gate input should not be null");
 
-        return new And(a, b);
+        return new And<Boolean>(a, b, Boolean.class);
     }
 
 
-    public final Calculatable createOrGateWithInputs(final Calculatable a, final Calculatable b) {
+    public final Calculatable<Boolean> createOrGateWithInputs(final Calculatable<Boolean> a, final Calculatable<Boolean> b) {
         Preconditions.checkNotNull(a, "Gate input should not be null");
         Preconditions.checkNotNull(b, "Gate input should not be null");
 
-        return new Or(a, b);
+        return new Or<Boolean>(a, b, Boolean.class);
     }
 
 
-    public final Calculatable createNotGateWithInput(final Calculatable a) {
+    public final Calculatable<Boolean> createNotGateWithInput(final Calculatable<Boolean> a) {
         Preconditions.checkNotNull(a, "Gate input should not be null");
 
-        return new Not(a);
+        return new Not<Boolean>(a, Boolean.class);
     }
 }

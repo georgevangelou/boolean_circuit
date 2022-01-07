@@ -1,15 +1,16 @@
 package circuitry.elements;
 
 import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.tuple.Pair;
 
 /**
- *
+ * Created on: 2022-01-07
  */
-public final class Circuit {
-    private final Calculatable<Boolean> calculatable;
+public class AdvancedCircuit {
+   private final Calculatable<?> calculatable;
 
 
-    protected Circuit(final Calculatable<Boolean> calculatable) {
+    protected AdvancedCircuit(final Calculatable<?> calculatable) {
         Preconditions.checkNotNull(calculatable, "Circuit input should not be null");
 
         this.calculatable = calculatable;
@@ -21,7 +22,8 @@ public final class Circuit {
     }
 
 
-    public boolean calculate() {
-        return this.calculatable.calculate().getRight();
+    public Pair<Boolean, ?> calculate() {
+        return this.calculatable.calculate();
     }
 }
+
