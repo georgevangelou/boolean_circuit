@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
- *
+ * Created on: 2022-01-07
  */
 class Gte<T> extends Calculatable<T> {
     private final Calculatable<Double> a;
@@ -25,7 +25,7 @@ class Gte<T> extends Calculatable<T> {
     @Override
     protected Pair<Boolean, T> calculateInner() {
         if (this.classOfInputs == Double.class) {
-            Boolean value =  ((Double) a.calculate().getRight() >= ((Double) b.calculate().getRight()));
+            Boolean value = ((Double) a.calculate().getRight() >= ((Double) b.calculate().getRight()));
             return Pair.of(true, (T) value);
         } else {
             throw new RuntimeException();

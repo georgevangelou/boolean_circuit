@@ -25,8 +25,9 @@ public final class InputPair<T> extends Calculatable<T> {
         }
     }
 
+
     public void set(final InputPair<?> updatedInput) {
-        if (this.pair.getLeft()!=updatedInput.pair.getLeft()) {
+        if (this.pair.getLeft() != updatedInput.pair.getLeft()) {
             throw new InputMismatchException("Input signal should not change type (boolean/double)");
         }
         this.pair = updatedInput.pair;

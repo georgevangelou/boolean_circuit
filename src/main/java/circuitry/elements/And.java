@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
- *
+ * Created on: 2022-01-06
  */
 class And<T> extends Calculatable<T> {
     private final Calculatable<T> a;
@@ -26,10 +26,10 @@ class And<T> extends Calculatable<T> {
     @Override
     protected Pair<Boolean, T> calculateInner() {
         if (this.classOfInputs == Double.class) {
-            Double value =  (Double) ((Double) a.calculate().getRight() * ((Double) b.calculate().getRight()));
+            Double value = (Double) ((Double) a.calculate().getRight() * ((Double) b.calculate().getRight()));
             return Pair.of(false, (T) value);
         } else if (this.classOfInputs == Boolean.class) {
-            Boolean value =  (Boolean) ((Boolean) a.calculate().getRight() && ((Boolean) b.calculate().getRight()));
+            Boolean value = (Boolean) ((Boolean) a.calculate().getRight() && ((Boolean) b.calculate().getRight()));
             return Pair.of(true, (T) value);
         } else {
             throw new RuntimeException();

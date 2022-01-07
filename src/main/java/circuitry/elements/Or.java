@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
- *
+ * Created on: 2022-01-06
  */
 class Or<T> extends Calculatable<T> {
     private final Calculatable<T> a;
