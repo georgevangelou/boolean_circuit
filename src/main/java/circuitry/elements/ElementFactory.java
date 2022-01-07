@@ -55,10 +55,10 @@ public final class ElementFactory extends API {
 
 
 
-    public final DualModeCircuit createDualModeCircuit(final Calculatable<?> a) {
+    public final Circuit createDualModeCircuit(final Calculatable<?> a) {
         Preconditions.checkNotNull(a, "Circuit input should not be null");
 
-        return new DualModeCircuit((Calculatable<?>) a);
+        return new Circuit((Calculatable<?>) a);
     }
 
 
