@@ -74,4 +74,16 @@ public class DualModeCircuitryElementFactory extends API {
             throw new InputMismatchException("Wrong matching");
         }
     }
+
+
+    public final Calculatable<Boolean> createGteGateWithInputs(final Calculatable<Double> a, final Calculatable<Double> b) {
+        Preconditions.checkNotNull(a, "Gate input should not be null");
+        Preconditions.checkNotNull(b, "Gate input should not be null");
+
+        if (a.calculate().getRight() instanceof Double) {
+            return new Gte<>((Calculatable<Double>) a, (Calculatable<Double>) b);
+        } else {
+            throw new InputMismatchException("Wrong matching");
+        }
+    }
 }
