@@ -1,8 +1,12 @@
-import circuitry.elements.*;
+import circuitry.elements.API;
+import circuitry.elements.AdvancedCircuit;
+import circuitry.elements.ExtendedCircuitryElementFactory;
+import circuitry.elements.InputPair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  *
@@ -21,8 +25,8 @@ public class TestingBooleanDoubleCircuit {
 
     @Test
     public void testAndGateBoolean() {
-        final InputPair<?>  input1 = factory.createInputPair(true, false);
-        final InputPair<?>  input2 = factory.createInputPair(true, true);
+        final InputPair<?> input1 = factory.createInputPair(true, false);
+        final InputPair<?> input2 = factory.createInputPair(true, true);
         AdvancedCircuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, input2));
         assertEquals(Pair.of(true, false), circuit.calculate());
 
@@ -44,22 +48,112 @@ public class TestingBooleanDoubleCircuit {
     public void testAndGateDouble() {
         Pair<Boolean, ?> result;
 
-        final InputPair<?>  input1 = factory.createInputPair(false, 0.6);
-        final InputPair<?>  input2 = factory.createInputPair(false, 0.5);
+        final InputPair<?> input1 = factory.createInputPair(false, 0.6);
+        final InputPair<?> input2 = factory.createInputPair(false, 0.5);
         AdvancedCircuit circuit = factory.createCircuit(factory.createAndGateWithInputs(input1, input2));
-         result = circuit.calculate();
+        result = circuit.calculate();
         assertEquals(false, result.getLeft());
         assertEquals(0.3, (double) result.getRight(), 0.001);
 
         input1.set(factory.createInputPair(false, 0.1));
         input2.set(factory.createInputPair(false, 0.1));
-         result = circuit.calculate();
+        result = circuit.calculate();
         assertEquals(false, result.getLeft());
         assertEquals(0.01, (double) result.getRight(), 0.001);
 
         try {
             input1.set(factory.createInputPair(true, true));
             input2.set(factory.createInputPair(true, false));
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+        }
+        System.out.println("Success (testAndGateDouble)!");
+    }
+
+
+    @Test
+    public void testOrGateBoolean() {
+        final InputPair<?> input1 = factory.createInputPair(true, false);
+        final InputPair<?> input2 = factory.createInputPair(true, true);
+        AdvancedCircuit circuit = factory.createCircuit(factory.createOrGateWithInputs(input1, input2));
+        assertEquals(Pair.of(true, true), circuit.calculate());
+
+        input1.set(factory.createInputPair(true, false));
+        input2.set(factory.createInputPair(true, false));
+        assertEquals(Pair.of(true, false), circuit.calculate());
+
+        try {
+            input1.set(factory.createInputPair(false, 0.2));
+            input2.set(factory.createInputPair(false, 0.5));
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+        }
+        System.out.println("Success (testAndGateBoolean)!");
+    }
+
+
+    @Test
+    public void testOrGateDouble() {
+        Pair<Boolean, ?> result;
+
+        final InputPair<?> input1 = factory.createInputPair(false, 0.6);
+        final InputPair<?> input2 = factory.createInputPair(false, 0.5);
+        AdvancedCircuit circuit = factory.createCircuit(factory.createOrGateWithInputs(input1, input2));
+        result = circuit.calculate();
+        assertEquals(false, result.getLeft());
+        assertEquals(1 - (1 - 0.6) * (1 - 0.5), (double) result.getRight(), 0.001);
+
+        input1.set(factory.createInputPair(false, 0.1));
+        input2.set(factory.createInputPair(false, 0.1));
+        result = circuit.calculate();
+        assertEquals(false, result.getLeft());
+        assertEquals(1 - (1 - 0.1) * (1 - 0.1), (double) result.getRight(), 0.001);
+
+        try {
+            input1.set(factory.createInputPair(true, true));
+            input2.set(factory.createInputPair(true, false));
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+        }
+        System.out.println("Success (testAndGateDouble)!");
+    }
+
+
+    @Test
+    public void testNotGateBoolean() {
+        final InputPair<?> input1 = factory.createInputPair(true, false);
+        AdvancedCircuit circuit = factory.createCircuit(factory.createNotGateWithInputs(input1));
+        assertEquals(Pair.of(true, true), circuit.calculate());
+
+        input1.set(factory.createInputPair(true, true));
+        assertEquals(Pair.of(true, false), circuit.calculate());
+
+        try {
+            input1.set(factory.createInputPair(false, 0.2));
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+        }
+        System.out.println("Success (testAndGateBoolean)!");
+    }
+
+
+    @Test
+    public void testNotGateDouble() {
+        Pair<Boolean, ?> result;
+
+        final InputPair<?> input1 = factory.createInputPair(false, 0.6);
+        AdvancedCircuit circuit = factory.createCircuit(factory.createNotGateWithInputs(input1));
+        result = circuit.calculate();
+        assertEquals(false, result.getLeft());
+        assertEquals(1 - 0.6, (double) result.getRight(), 0.001);
+
+        input1.set(factory.createInputPair(false, 0.1));
+        result = circuit.calculate();
+        assertEquals(false, result.getLeft());
+        assertEquals(1 - 0.1, (double) result.getRight(), 0.001);
+
+        try {
+            input1.set(factory.createInputPair(true, true));
             fail("Exception should have been thrown");
         } catch (Exception e) {
         }
