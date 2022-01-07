@@ -25,7 +25,7 @@ class Gte<T> extends Calculatable<T> {
     @Override
     protected Pair<Boolean, T> calculateInner() {
         if (this.classOfInputs == Double.class) {
-            Boolean value =  ((Double) a.calculate().getRight() >= ((Double) b.calculate().getRight()));
+            Boolean value = ((Double) a.calculate().getRight() >= ((Double) b.calculate().getRight()));
             return Pair.of(true, (T) value);
         } else {
             throw new RuntimeException();

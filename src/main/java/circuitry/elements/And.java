@@ -26,10 +26,10 @@ class And<T> extends Calculatable<T> {
     @Override
     protected Pair<Boolean, T> calculateInner() {
         if (this.classOfInputs == Double.class) {
-            Double value =  (Double) ((Double) a.calculate().getRight() * ((Double) b.calculate().getRight()));
+            Double value = (Double) ((Double) a.calculate().getRight() * ((Double) b.calculate().getRight()));
             return Pair.of(false, (T) value);
         } else if (this.classOfInputs == Boolean.class) {
-            Boolean value =  (Boolean) ((Boolean) a.calculate().getRight() && ((Boolean) b.calculate().getRight()));
+            Boolean value = (Boolean) ((Boolean) a.calculate().getRight() && ((Boolean) b.calculate().getRight()));
             return Pair.of(true, (T) value);
         } else {
             throw new RuntimeException();

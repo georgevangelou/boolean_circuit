@@ -24,7 +24,7 @@ class Not<T> extends Calculatable<T> {
     protected Pair<Boolean, T> calculateInner() {
         if (this.classOfInputs == Double.class) {
             double ad = (Double) a.calculate().getRight();
-            Double value = (1 - ad)  ;
+            Double value = (1 - ad);
             return Pair.of(false, (T) value);
         } else if (this.classOfInputs == Boolean.class) {
             Boolean value = !((Boolean) ((Boolean) a.calculate().getRight()));
