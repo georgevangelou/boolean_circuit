@@ -1,6 +1,5 @@
 import circuitry.elements.API;
 import circuitry.elements.DualModeCircuit;
-import circuitry.elements.DualModeCircuitryElementFactory;
 import circuitry.elements.InputPair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
