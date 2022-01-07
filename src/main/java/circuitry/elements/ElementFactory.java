@@ -19,7 +19,7 @@ public final class ElementFactory extends API {
     }
 
 
-    public final Circuit createCircuit(final Calculatable<Boolean> a) {
+    public final Circuit createCircuit(final Calculatable<?> a) {
         Preconditions.checkNotNull(a, "Circuit input should not be null");
 
         return new Circuit(a);
@@ -51,13 +51,6 @@ public final class ElementFactory extends API {
         Preconditions.checkNotNull(a, "Gate input should not be null");
 
         return new Not<Boolean>(a, Boolean.class);
-    }
-
-
-    public final Circuit createDualModeCircuit(final Calculatable<?> a) {
-        Preconditions.checkNotNull(a, "Circuit input should not be null");
-
-        return new Circuit((Calculatable<?>) a);
     }
 
 

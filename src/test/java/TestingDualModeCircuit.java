@@ -14,7 +14,7 @@ public class TestingDualModeCircuit {
 
     @Test
     public void testCircuitCreation() {
-        Circuit circuit = factory.createDualModeCircuit(factory.createInputPair(true, true));
+        Circuit circuit = factory.createCircuit(factory.createInputPair(true, true));
         circuit.hello();
         System.out.println("Success (testCreation)!");
     }
@@ -24,7 +24,7 @@ public class TestingDualModeCircuit {
     public void testAndGateBoolean() {
         final InputPair<?> input1 = factory.createInputPair(true, false);
         final InputPair<?> input2 = factory.createInputPair(true, true);
-        Circuit circuit = factory.createDualModeCircuit(factory.createDualModeAndGateWithInputs(input1, input2));
+        Circuit circuit = factory.createCircuit(factory.createDualModeAndGateWithInputs(input1, input2));
         assertEquals(Pair.of(true, false), circuit.calculatePairOutput());
 
         input1.set(factory.createInputPair(true, true));
@@ -47,7 +47,7 @@ public class TestingDualModeCircuit {
 
         final InputPair<?> input1 = factory.createInputPair(false, 0.6);
         final InputPair<?> input2 = factory.createInputPair(false, 0.5);
-        Circuit circuit = factory.createDualModeCircuit(factory.createDualModeAndGateWithInputs(input1, input2));
+        Circuit circuit = factory.createCircuit(factory.createDualModeAndGateWithInputs(input1, input2));
         result = circuit.calculatePairOutput();
         assertEquals(false, result.getLeft());
         assertEquals(0.3, (double) result.getRight(), 0.001);
@@ -72,7 +72,7 @@ public class TestingDualModeCircuit {
     public void testOrGateBoolean() {
         final InputPair<?> input1 = factory.createInputPair(true, false);
         final InputPair<?> input2 = factory.createInputPair(true, true);
-        Circuit circuit = factory.createDualModeCircuit(factory.createDualModeOrGateWithInputs(input1, input2));
+        Circuit circuit = factory.createCircuit(factory.createDualModeOrGateWithInputs(input1, input2));
         assertEquals(Pair.of(true, true), circuit.calculatePairOutput());
 
         input1.set(factory.createInputPair(true, false));
@@ -95,7 +95,7 @@ public class TestingDualModeCircuit {
 
         final InputPair<?> input1 = factory.createInputPair(false, 0.6);
         final InputPair<?> input2 = factory.createInputPair(false, 0.5);
-        Circuit circuit = factory.createDualModeCircuit(factory.createDualModeOrGateWithInputs(input1, input2));
+        Circuit circuit = factory.createCircuit(factory.createDualModeOrGateWithInputs(input1, input2));
         result = circuit.calculatePairOutput();
         assertEquals(false, result.getLeft());
         assertEquals(1 - (1 - 0.6) * (1 - 0.5), (double) result.getRight(), 0.001);
@@ -119,7 +119,7 @@ public class TestingDualModeCircuit {
     @Test
     public void testNotGateBoolean() {
         final InputPair<?> input1 = factory.createInputPair(true, false);
-        Circuit circuit = factory.createDualModeCircuit(factory.createDualModeNotGateWithInputs(input1));
+        Circuit circuit = factory.createCircuit(factory.createDualModeNotGateWithInputs(input1));
         assertEquals(Pair.of(true, true), circuit.calculatePairOutput());
 
         input1.set(factory.createInputPair(true, true));
@@ -139,7 +139,7 @@ public class TestingDualModeCircuit {
         Pair<Boolean, ?> result;
 
         final InputPair<?> input1 = factory.createInputPair(false, 0.6);
-        Circuit circuit = factory.createDualModeCircuit(factory.createDualModeNotGateWithInputs(input1));
+        Circuit circuit = factory.createCircuit(factory.createDualModeNotGateWithInputs(input1));
         result = circuit.calculatePairOutput();
         assertEquals(false, result.getLeft());
         assertEquals(1 - 0.6, (double) result.getRight(), 0.001);
@@ -172,7 +172,7 @@ public class TestingDualModeCircuit {
         final Calculatable<?> sig3 = factory.createDualModeAndGateWithInputs(input3, input4);
         final Calculatable<?> sig4 = factory.createDualModeOrGateWithInputs(sig3, sig2);
 
-        Circuit circuit = factory.createDualModeCircuit(sig4);
+        Circuit circuit = factory.createCircuit(sig4);
         result = circuit.calculatePairOutput();
         assertEquals(Pair.of(true, true), result);
 
@@ -185,7 +185,7 @@ public class TestingDualModeCircuit {
         final Calculatable<?> sig7 = factory.createDualModeAndGateWithInputs(input3, input4);
         final Calculatable<?> sig8 = factory.createDualModeOrGateWithInputs(sig7, sig6);
 
-        Circuit circuit1 = factory.createDualModeCircuit(sig8);
+        Circuit circuit1 = factory.createCircuit(sig8);
         result = circuit1.calculatePairOutput();
         assertEquals(Pair.of(true, false), result);
 
@@ -207,7 +207,7 @@ public class TestingDualModeCircuit {
         final InputPair<?> input2 = factory.createInputPair(true, true);
 
         try {
-            Circuit circuit = factory.createDualModeCircuit(factory.createGteGateWithInputs(input1, input2));
+            Circuit circuit = factory.createCircuit(factory.createGteGateWithInputs(input1, input2));
             fail("Exception should have been thrown");
         } catch (Exception e) {
         }
@@ -221,7 +221,7 @@ public class TestingDualModeCircuit {
 
         final InputPair<?> input1 = factory.createInputPair(false, 0.6);
         final InputPair<?> input2 = factory.createInputPair(false, 0.5);
-        Circuit circuit = factory.createDualModeCircuit(factory.createGteGateWithInputs(input1, input2));
+        Circuit circuit = factory.createCircuit(factory.createGteGateWithInputs(input1, input2));
         result = circuit.calculatePairOutput();
         assertEquals(true, result.getLeft());
         assertEquals(true, result.getRight());
