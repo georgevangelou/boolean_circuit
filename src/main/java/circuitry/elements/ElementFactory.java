@@ -16,8 +16,6 @@ public final class ElementFactory extends API {
 
     @Override
     protected void init(int version) throws IllegalStateException {
-        if (version != API.VERSION)
-            throw new IllegalStateException("API version error!");
     }
 
 
