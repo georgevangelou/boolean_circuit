@@ -163,7 +163,7 @@ public class TestingDualModeCircuit {
 
     // (x4 and x3) or (x2 and not (x1))
     @Test
-    public void testComplexCircuitDouble() {
+    public void testComplexCircuitBoolean() {
         Pair<Boolean, ?> result;
 
         final InputPair<?> input1 = factory.createInputPair(true, true);
@@ -179,6 +179,19 @@ public class TestingDualModeCircuit {
         Circuit circuit = factory.createDualModeCircuit(sig4);
         result = circuit.calculatePairOutput();
         assertEquals( Pair.of(true,true), result);
+
+        input1.set(factory.createInputPair(true, false));
+        input2.set(factory.createInputPair(true, false));
+        input3.set(factory.createInputPair(true, false));
+
+        final Calculatable sig5 = factory.createDualModeNotGateWithInputs(input1);
+        final Calculatable sig6 = factory.createDualModeAndGateWithInputs(sig5, input2);
+        final Calculatable sig7 = factory.createDualModeAndGateWithInputs(input3, input4);
+        final Calculatable sig8 = factory.createDualModeOrGateWithInputs(sig7, sig6);
+
+        Circuit circuit1 = factory.createDualModeCircuit(sig8);
+        result = circuit1.calculatePairOutput();
+        assertEquals(Pair.of(true, false), result);
 
         try {
             input1.set(factory.createInputPair(false, 0.7));
