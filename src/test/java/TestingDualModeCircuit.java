@@ -230,13 +230,7 @@ public class TestingDualModeCircuit {
         input2.set(factory.createInputPair(true, false));
         input3.set(factory.createInputPair(true, false));
 
-        final Calculatable<?> sig5 = factory.createDualModeNotGateWithInputs(input1);
-        final Calculatable<?> sig6 = factory.createDualModeAndGateWithInputs(sig5, input2);
-        final Calculatable<?> sig7 = factory.createDualModeAndGateWithInputs(input3, input4);
-        final Calculatable<?> sig8 = factory.createDualModeOrGateWithInputs(sig7, sig6);
-
-        Circuit circuit1 = factory.createCircuit(sig8);
-        result = circuit1.calculatePairOutput();
+        result = circuit.calculatePairOutput();
         assertEquals(Pair.of(true, false), result);
 
         try {
