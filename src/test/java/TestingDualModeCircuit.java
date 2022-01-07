@@ -214,19 +214,19 @@ public class TestingDualModeCircuit {
         final InputPair<?> input2 = factory.createInputPair(false, 0.5);
         Circuit circuit = factory.createDualModeCircuit(factory.createGteGateWithInputs(input1, input2));
         result = circuit.calculatePairOutput();
-        assertEquals(false, result.getLeft());
+        assertEquals(true, result.getLeft());
         assertEquals(true, result.getRight());
 
         input1.set(factory.createInputPair(false, 0.1));
         input2.set(factory.createInputPair(false, 0.1));
         result = circuit.calculatePairOutput();
-        assertEquals(false, result.getLeft());
+        assertEquals(true, result.getLeft());
         assertEquals(true, result.getRight());
 
         input1.set(factory.createInputPair(false, 0.1));
         input2.set(factory.createInputPair(false, 0.3));
         result = circuit.calculatePairOutput();
-        assertEquals(false, result.getLeft());
+        assertEquals(true, result.getLeft());
         assertEquals(false, result.getRight());
 
         try {
