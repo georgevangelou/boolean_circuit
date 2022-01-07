@@ -5,10 +5,11 @@ import com.google.common.base.Preconditions;
 /**
  *
  */
-public class Or extends Calculatable{
+public class Or extends Calculatable {
     private final Calculatable a;
     private final Calculatable b;
-    
+
+
     protected Or(final Calculatable a, final Calculatable b) {
         Preconditions.checkNotNull(a, "Gate input should not be null");
         Preconditions.checkNotNull(b, "Gate input should not be null");
@@ -17,6 +18,8 @@ public class Or extends Calculatable{
         this.b = b;
     }
 
+
+    @Override
     protected boolean calculateInner() {
         return a.calculate() || b.calculate();
     }

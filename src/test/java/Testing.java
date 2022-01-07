@@ -8,14 +8,16 @@ import static org.junit.jupiter.api.Assertions.fail;
  *
  */
 public class Testing {
-    private ElementFactory factory = new ElementFactory(API.VERSION);
+    private final ElementFactory factory = new ElementFactory(API.VERSION);
+
 
     @Test
-    public void testCreation() {
+    public void testCircuitCreation() {
         Circuit circuit = factory.createCircuit(factory.createInputBoolean(false));
         circuit.hello();
         System.out.println("Success (testCreation)!");
     }
+
 
     @Test
     public void testAndGate() {
@@ -38,6 +40,7 @@ public class Testing {
 
         System.out.println("Success (testAndGate)!");
     }
+
 
     @Test
     public void testOrGate() {
@@ -110,6 +113,7 @@ public class Testing {
         }
     }
 
+
     @Test
     public void testIfCircuitIsFailSafe2() {
         try {
@@ -124,6 +128,7 @@ public class Testing {
             System.out.println("Success (testIfCircuitIsFailSafe2)!");
         }
     }
+
 
     @Test
     public void testIfCircuitIsFailSafe3() {

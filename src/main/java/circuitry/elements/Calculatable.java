@@ -14,6 +14,6 @@ public abstract class Calculatable {
         }
     }
 
-    protected abstract boolean calculateInner();
 
+    protected abstract boolean calculateInner();
 }
