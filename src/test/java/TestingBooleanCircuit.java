@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 /**
  *
  */
-public class Testing {
+public class TestingBooleanCircuit {
     private final ElementFactory factory = new ElementFactory(API.VERSION);
 
 
@@ -148,7 +148,7 @@ public class Testing {
     }
 
 
-    public Testing() {
+    public TestingBooleanCircuit() {
     }
 
     @org.junit.jupiter.api.BeforeAll
