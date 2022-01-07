@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
- *
+ * Created on: 2022-01-07
  */
 class Gte<T> extends Calculatable<T> {
     private final Calculatable<Double> a;

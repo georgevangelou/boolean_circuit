@@ -3,7 +3,7 @@ package circuitry.elements;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
- *
+ * Created on: 2022-01-06
  */
 public final class InputBoolean extends Calculatable<Boolean> {
     private boolean value;

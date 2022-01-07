@@ -3,7 +3,7 @@ package circuitry.elements;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
- *
+ * Created on: 2022-01-06
  */
 public abstract class Calculatable<T> {
 
