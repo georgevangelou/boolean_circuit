@@ -278,6 +278,41 @@ public class TestingDualModeCircuit {
         System.out.println("Success (testComplexCircuitDouble)!");
     }
 
+
+    /**
+     * (x4 and x3) GTE (x2 and not (x1))
+     */
+    @Test
+    public void testComplexCircuitDoubleWithGte() {
+        Pair<Boolean, ?> result;
+
+        final InputPair<?> input1 = factory.createInputPair(false, 0.1);
+        final InputPair<?> input2 = factory.createInputPair(false, 0.2);
+        final InputPair<?> input3 = factory.createInputPair(false, 0.5);
+        final InputPair<?> input4 = factory.createInputPair(false, 0.6);
+
+        final Calculatable<?> sig1 = factory.createDualModeNotGateWithInputs(input1);
+        final Calculatable<?> sig2 = factory.createDualModeAndGateWithInputs(sig1, input2);
+        final Calculatable<?> sig3 = factory.createDualModeAndGateWithInputs(input3, input4);
+        final Calculatable<?> sig4 = factory.createGteGateWithInputs(sig3, sig2);
+
+        // (x4 and x3) gte (x2 and not(x1))
+        // (0.6 * 0.5) gte (0.2 * 0.9)
+        // 0.3 gte 0.18 = true
+        Circuit circuit = factory.createCircuit(sig4);
+        result = circuit.calculatePairOutput();
+        assertEquals(true, result.getLeft());
+        assertEquals(true, (Boolean) result.getRight());
+
+        try {
+            input1.set(factory.createInputPair(true, false));
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+        }
+        System.out.println("Success (testComplexCircuitDouble)!");
+    }
+
+
     public TestingDualModeCircuit() {
     }
 
