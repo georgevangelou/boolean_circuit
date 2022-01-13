@@ -9,12 +9,12 @@ Development Date: From 06-01-2022 ([v1.0.0](https://github.com/georgevangelou/bo
 - Sharma Mayank
 
 ### Description
-#### Version 1 [v1.0.0](https://github.com/georgevangelou/boolean_circuit/releases/tag/v1.0.0):
+#### Version 1 ([v1.0.0](https://github.com/georgevangelou/boolean_circuit/releases/tag/v1.0.0)):
 - The circuit should accept boolean inputs and output boolean output.
 - AND, OR, NOT gates should be implemented.
 - The API should provide the client with the capability to build their own gates.
 
-#### Version 2 [v1.1.0](https://github.com/georgevangelou/boolean_circuit/releases/tag/v1.1.0):
+#### Version 2 ([v1.1.0](https://github.com/georgevangelou/boolean_circuit/releases/tag/v1.1.0)):
 - Have the features of Version 1.
 - Accept <Boolean, Boolean/Double> inputs and output <Boolean, Boolean/Double> elements.
 - GTE (greater than / equal to) gate should be implemented.
