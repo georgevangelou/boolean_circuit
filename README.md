@@ -16,6 +16,7 @@ Development Date: From 06-01-2022 ([v1.0.0](https://github.com/georgevangelou/bo
 
 #### Version 2 ([v1.1.0](https://github.com/georgevangelou/boolean_circuit/releases/tag/v1.1.0)):
 - Have the features of Version 1.
+- Should be backwards compatible with Version 1.
 - Accept <Boolean, Boolean/Double> inputs and output <Boolean, Boolean/Double> elements.
 - GTE (greater than / equal to) gate should be implemented.
 
